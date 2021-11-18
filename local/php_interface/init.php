@@ -15,6 +15,6 @@ $oEventManager->addEventHandler(
     'OnIBlockPropertyBuildList',
     [
         YoutubeVideo::class,
-        'GetDescription'
+        'GetUserTypeDescription'
     ]
 );

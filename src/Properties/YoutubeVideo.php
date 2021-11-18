@@ -13,18 +13,18 @@ class YoutubeVideo
      *
      * @return array
      */
-    public function GetDescription(): array
+    public function GetUserTypeDescription(): array
     {
         return [
             'USER_TYPE_ID' => 'youtube_video',
-            'USER_TYPE' => 'STRING',
-            'CLASS_NAME' => self::class,
+            'USER_TYPE' => 'YoutubeVideo',
+            'CLASS_NAME' => __CLASS__,
             'DESCRIPTION' => 'Видео Youtube',
             'PROPERTY_TYPE' => PropertyTable::TYPE_STRING,
-            'ConvertToDB' => [self::class, 'ConvertToDB'],
-            'ConvertFromDB' => [self::class, 'ConvertFromDB'],
-            'GetPropertyFieldHtml' => [self::class, 'GetPropertyFieldHtml'],
-            'CheckFields' => [self::class, 'CheckFields']
+            'ConvertToDB' => [__CLASS__, 'ConvertToDB'],
+            'ConvertFromDB' => [__CLASS__, 'ConvertFromDB'],
+            'GetPropertyFieldHtml' => [__CLASS__, 'GetPropertyFieldHtml'],
+            'CheckFields' => [__CLASS__, 'CheckFields']
         ];
     }
 
@@ -66,8 +66,8 @@ class YoutubeVideo
             'props:youtube_video',
             '',
             [
-                'VALUE' => $value,
-                'HTML_CONTROLS' => $arHtmlControl
+                'VALUE' => $value['VALUE'],
+                'HTML_VALUE' => $arHtmlControl['VALUE']
             ]
         );
     }
@@ -82,7 +82,7 @@ class YoutubeVideo
     {
         $arResult = [];
 
-        if (!preg_match(self::$sRegularExpression, $value['VALUE'])) {
+        if (!empty($value['VALUE']) && !preg_match(self::$sRegularExpression, $value['VALUE'])) {
             $arResult[] = 'Неверный формат ссылки на видео Youtube. Необходимый формат: https://www.youtube.com/embed/#ID#';
         }
 

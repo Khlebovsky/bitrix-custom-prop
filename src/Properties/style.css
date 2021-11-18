@@ -1,0 +1,9 @@
+.video-container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+#video-iframe {
+    margin-top: 20px;
+}
