@@ -1,0 +1,11 @@
+/bitrix/*
+/desktop_app/*
+/vendor/*
+/upload/*
+/pub/*
+
+*.json
+*.lock
+
+.git
+.idea
